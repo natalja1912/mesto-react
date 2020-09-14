@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/natalja1912/mesto-react.git/static/css/main.adfecde0.chunk.css",
-    "main.js": "/natalja1912/mesto-react.git/static/js/main.d29d7856.chunk.js",
-    "main.js.map": "/natalja1912/mesto-react.git/static/js/main.d29d7856.chunk.js.map",
-    "runtime-main.js": "/natalja1912/mesto-react.git/static/js/runtime-main.db13559c.js",
-    "runtime-main.js.map": "/natalja1912/mesto-react.git/static/js/runtime-main.db13559c.js.map",
-    "static/js/2.8b66efd4.chunk.js": "/natalja1912/mesto-react.git/static/js/2.8b66efd4.chunk.js",
-    "static/js/2.8b66efd4.chunk.js.map": "/natalja1912/mesto-react.git/static/js/2.8b66efd4.chunk.js.map",
-    "index.html": "/natalja1912/mesto-react.git/index.html",
-    "precache-manifest.8aba2aeded335868eecf93dcfde401ab.js": "/natalja1912/mesto-react.git/precache-manifest.8aba2aeded335868eecf93dcfde401ab.js",
-    "service-worker.js": "/natalja1912/mesto-react.git/service-worker.js",
-    "static/css/main.adfecde0.chunk.css.map": "/natalja1912/mesto-react.git/static/css/main.adfecde0.chunk.css.map",
-    "static/js/2.8b66efd4.chunk.js.LICENSE.txt": "/natalja1912/mesto-react.git/static/js/2.8b66efd4.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/natalja1912/mesto-react.git/static/media/like-button.6c74d9b5.svg",
-    "static/media/header-logo.svg": "/natalja1912/mesto-react.git/static/media/header-logo.855a8c98.svg"
+    "main.css": "/natalja1912/mesto-react/static/css/main.af74f7d1.chunk.css",
+    "main.js": "/natalja1912/mesto-react/static/js/main.25ca53a0.chunk.js",
+    "main.js.map": "/natalja1912/mesto-react/static/js/main.25ca53a0.chunk.js.map",
+    "runtime-main.js": "/natalja1912/mesto-react/static/js/runtime-main.42833782.js",
+    "runtime-main.js.map": "/natalja1912/mesto-react/static/js/runtime-main.42833782.js.map",
+    "static/js/2.8b66efd4.chunk.js": "/natalja1912/mesto-react/static/js/2.8b66efd4.chunk.js",
+    "static/js/2.8b66efd4.chunk.js.map": "/natalja1912/mesto-react/static/js/2.8b66efd4.chunk.js.map",
+    "index.html": "/natalja1912/mesto-react/index.html",
+    "precache-manifest.3a015aaff7a7c047220a97fe6a2a819c.js": "/natalja1912/mesto-react/precache-manifest.3a015aaff7a7c047220a97fe6a2a819c.js",
+    "service-worker.js": "/natalja1912/mesto-react/service-worker.js",
+    "static/css/main.af74f7d1.chunk.css.map": "/natalja1912/mesto-react/static/css/main.af74f7d1.chunk.css.map",
+    "static/js/2.8b66efd4.chunk.js.LICENSE.txt": "/natalja1912/mesto-react/static/js/2.8b66efd4.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/natalja1912/mesto-react/static/media/like-button.6c74d9b5.svg",
+    "static/media/header-logo.svg": "/natalja1912/mesto-react/static/media/header-logo.855a8c98.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.db13559c.js",
+    "static/js/runtime-main.42833782.js",
     "static/js/2.8b66efd4.chunk.js",
-    "static/css/main.adfecde0.chunk.css",
-    "static/js/main.d29d7856.chunk.js"
+    "static/css/main.af74f7d1.chunk.css",
+    "static/js/main.25ca53a0.chunk.js"
   ]
 }
