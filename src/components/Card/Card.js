@@ -3,8 +3,8 @@ import React from 'react';
 function Card({ name, link, likes, handleCard }) {
 
     function handleClick() {
-        handleCard({name, link});
-      } 
+        handleCard({ name, link });
+    }
 
     return (
         <div className="place">

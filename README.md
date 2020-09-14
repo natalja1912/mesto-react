@@ -17,8 +17,5 @@
  * React JS
  * хуки React JS
 
-
-##Ссылка на сайт github pages (https://natalja1912.github.io/mesto/)
-
 ## Что можно улучшить
 Можно добавить в проект новые страницы
