@@ -3,7 +3,7 @@ import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 
-function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
+function EditProfilePopup({ isOpen, onClose, onUpdateUser, isLoading }) {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const currentUser = React.useContext(CurrentUserContext);
@@ -23,7 +23,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
     }
 
     return (
-        <PopupWithForm name="profile" title="Редактировать профиль" buttonText="Сохранить" isOpen={isOpen} onClose={onClose} onSubmit={(e) => handleSubmit(e)}>
+        <PopupWithForm name="profile" title="Редактировать профиль" buttonText={isLoading ? "Сохранение..." : "Сохранить"} isOpen={isOpen} onClose={onClose} onSubmit={(e) => handleSubmit(e)}>
             <label className="popup__input">
                 <input onChange={(e) => setName(e.target.value)} type="text" className="popup__text popup__text_type_name" name="popup__text_type_name" placeholder="Имя исследователя" minLength="2" maxLength="40" required />
                 <span className="popup__input-error">Вы пропустили это поле.</span>

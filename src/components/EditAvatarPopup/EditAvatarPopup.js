@@ -3,7 +3,7 @@ import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 
-function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
+function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, isLoading }) {
     const currentUser = React.useContext(CurrentUserContext);
     const avatarRef = React.useRef();
 
@@ -13,7 +13,7 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
     }
 
     return (
-        <PopupWithForm name="avatar" title="Обновить аватар" buttonText="Сохранить" isOpen={isOpen} onClose={onClose} onSubmit={(e) => handleSubmit(e)}>
+        <PopupWithForm name="avatar" title="Обновить аватар" buttonText={isLoading ? "Сохранение..." : "Сохранить"} isOpen={isOpen} onClose={onClose} onSubmit={(e) => handleSubmit(e)}>
             <label className="popup__input">
                 <input ref={avatarRef} type="url" className="popup__text popup__text_type_placelink" name="popup__text_type_placelink" placeholder="https://unsplash.com/example.jpg" required />
                 <span className="popup__input-error">Введите адрес сайта.</span>
