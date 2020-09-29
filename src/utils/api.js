@@ -4,15 +4,19 @@ class Api {
     this._headers = options.headers;
   }
 
+  _getResponseData = (res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(new Error(`Ошибка: ${res.status}`));
+  }
+
   getInitialCards() {
     return fetch(`${this._url}/cards`, {
       headers: this._headers
     })
       .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return this._getResponseData(res);
       })
   }
 
@@ -21,10 +25,7 @@ class Api {
       headers: this._headers
     })
       .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return this._getResponseData(res);
       })
   }
 
@@ -38,10 +39,7 @@ class Api {
       })
     })
       .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return this._getResponseData(res);
       })
   }
 
@@ -55,10 +53,7 @@ class Api {
       })
     })
       .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return this._getResponseData(res);
       })
   }
 
@@ -68,10 +63,7 @@ class Api {
       headers: this._headers
     })
       .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return this._getResponseData(res);
       })
   }
 
@@ -81,10 +73,7 @@ class Api {
       headers: this._headers
     })
       .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return this._getResponseData(res);
       })
   }
 
@@ -97,10 +86,7 @@ class Api {
       })
     })
       .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return this._getResponseData(res);
       })
   }
 

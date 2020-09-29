@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from './Header/Header';
 import Main from './Main/Main';
-import PopupWithForm from './PopupWithForm/PopupWithForm';
 import ImagePopup from './ImagePopup/ImagePopup';
 import Footer from './Footer/Footer';
 import api from '../utils/api';
@@ -23,25 +22,22 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [cardToDelete, setCardToDelete] = useState({});
 
-  //загрузка с сервера данных пользователя
+  /**
+ * return cards and initial user info from the server
+ */
   useEffect(() => {
-    api.getUserInfo()
-      .then(res => {
-        setCurrentUser(res);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
-  //загрузка карточек с сервера
-  useEffect(() => {
-    api.getInitialCards()
-      .then((items) => {
+    Promise.all([api.getUserInfo(), api.getInitialCards()])
+      .then(([user, items]) => {
+        setCurrentUser(user);
         setCards(items);
       })
       .catch((err) => console.log(err));
   }, []);
 
-  //функция добавления и удаления лайков карточки
+  /**
+ * change number of likes in the card and send card likes info to the server
+ * @param   {object} card  card being clicked
+ */
   function handleCardLike(card) {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
 
@@ -53,20 +49,32 @@ function App() {
       .catch((err) => console.log(err));
   }
 
-  //открытие попапов редактирования профиля, аватара и добавления нового места
+  /**
+* open popup that edits user data
+*/
   function handleEditProfileClick() {
     setEditProfilePopupOpen(true);
   }
 
+  /**
+ * open popup that edits avatar link
+ */
   function handleEditAvatarClick() {
     setEditAvatarPopupOpen(true);
   }
 
+  /**
+* open popup that adds new card
+*/
   function handleAddPlaceClick() {
     setAddPlacePopupOpen(true);
   }
 
-  //вадидация формы добавления нового места и сброса ошибок валидации при закрытии формы
+  /**
+ * enable validation for the form that adds new card by creating 
+ * new instance of FormValidator class
+ * @return  {function}   method that resets the form
+ */
   useEffect(() => {
     const placeValidator = new FormValidator(selectors, document.querySelector('.popup__container_type_place'));
     placeValidator.enableValidation();
@@ -74,7 +82,12 @@ function App() {
     return placeValidator.formReset();
   }, [isAddPlacePopupOpen])
 
-  //вадидация формы редактирования профиля и сброса ошибок валидации при закрытии формы
+
+  /**
+   * enable validation for the form that edits profile by creating 
+   * new instance of FormValidator class
+   * @return  {function}   method that resets the form
+   */
   useEffect(() => {
     const profileValidator = new FormValidator(selectors, document.querySelector('.popup__container_type_profile'));
     profileValidator.enableValidation();
@@ -82,7 +95,12 @@ function App() {
     return profileValidator.formReset();
   }, [isEditProfilePopupOpen])
 
-  //вадидация формы редактирования аватара и сброса ошибок валидации при закрытии формы
+
+  /**
+   * enable validation for the form that edits avatar by creating 
+   * new instance of FormValidator class
+   * @return  {function}   method that resets the form
+   */
   useEffect(() => {
     const avatarValidator = new FormValidator(selectors, document.querySelector('.popup__container_type_avatar'));
     avatarValidator.enableValidation();
@@ -90,7 +108,9 @@ function App() {
     return avatarValidator.formReset();
   }, [isEditAvatarPopupOpen])
 
-  //закрытие всех попапов
+  /**
+   * close all popups 
+   */
   function closeAllPopups() {
     setEditProfilePopupOpen(false);
     setEditAvatarPopupOpen(false);
@@ -99,12 +119,16 @@ function App() {
     setSelectedCard(undefined);
   }
 
-  //открытие попапа с фото карточки по клику на карточку
+  /**
+   * open popup that enlarges the picture while clicking on the card 
+   */
   function handleCardClick(card) {
     setSelectedCard(card);
   }
 
-  //изменение данных пользователя при сабмите формы редактирования профиля
+  /**
+    * change user data on web-site and send new user data to the server 
+    */
   function handleUpdateUser(user) {
     setIsLoading(true);
     api.sendUserInfo(user)
@@ -116,7 +140,9 @@ function App() {
       .finally(() => setIsLoading(false));
   }
 
-  //изменение аватара при сабмите формы изменения аватара
+  /**
+  * change avatar data on web-site and send new avatar data to the server 
+  */
   function handleUpdateAvatar(avatar) {
     setIsLoading(true);
     api.changeAvatar(avatar)
@@ -132,25 +158,31 @@ function App() {
       .finally(() => setIsLoading(false));
   }
 
-  //добавление новой карточки при сабмите формы добавления карточки
+  /**
+      * add new card to the server and change array of cards shown on the web-site
+      */
   function handleAddPlaceSubmit(card) {
     setIsLoading(true);
     api.postNewCard(card)
-      .then(() => {
-        setCards([...cards, card]);
+      .then((newCard) => {
+        setCards([newCard,...cards]);
         closeAllPopups();
       })
       .catch((err) => console.log(err))
       .finally(() => setIsLoading(false));
   }
 
-  //удаление карточки
+  /**
+    * delete card
+    */
   function handleCardDelete(card) {
     setDeletePopupOpen(true);
     setCardToDelete(card);
   }
-
-  function cardDelete(){
+  /**
+     * delete card on the server and change array of cards shown on the web-site
+     */
+  function cardDelete() {
     api.deleteCard(cardToDelete._id)
       .then(() => {
         setCards(cards.filter(item => item._id !== cardToDelete._id));

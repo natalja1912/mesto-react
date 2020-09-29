@@ -25,7 +25,7 @@ function AddPlacePopup({ isOpen, onClose, onUpdateCard, isLoading }) {
     return (
         <PopupWithForm name="place" title="Новое место" buttonText={isLoading ? "Сохранение..." : "Сохранить"} isOpen={isOpen} onClose={onClose} onSubmit={(e) => handleSubmit(e)}>
             <label className="popup__input">
-                <input onChange={(e) => setName(e.target.value)} type="text" className="popup__text popup__text_type_placename" name="popup__text_type_placename" placeholder="Горный Алтай" minLength="1" maxLength="30" required />
+                <input onChange={(e) => setName(e.target.value)} type="text" className="popup__text popup__text_type_placename" name="popup__text_type_placename" placeholder="Горный Алтай" minLength="2" maxLength="30" required />
                 <span className="popup__input-error">Вы пропустили это поле.</span>
             </label>
             <label className="popup__input">
